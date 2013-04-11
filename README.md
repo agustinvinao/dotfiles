@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. `git clone http://github.com/mutewinter/dot_vim.git ~/.vim`
+1. `git clone http://github.com/agustinvinao/dotfiles.git ~/.vim`
 2. `cd ~/.vim`
 3. `rake vim:link` to make the .vimrc symbolic link.
 4. Install [Vundle](https://github.com/gmarik/vundle) with `git clone
@@ -13,28 +13,7 @@
 6. Enjoy enhanced productivity, increased levitation, reduced
    watermelon-related accidents, and startling sex appeal.
 
-## Screenshots
-
-**MacVim** / **Windows gVim**
-
-[![MacVim](https://github.com/mutewinter/dot_vim/raw/master/screenshots/MacVim1_small.png)](https://github.com/mutewinter/dot_vim/raw/master/screenshots/MacVim1.png) [![Windows gVim](https://github.com/mutewinter/dot_vim/raw/master/screenshots/Windows1_small.png)](https://github.com/mutewinter/dot_vim/raw/master/screenshots/Windows1.png)
-
-## Requirements
-
-**Mac**
-
- * [MacVim](https://github.com/b4winckler/macvim) - I'm currently using
- [snapshot 65](https://github.com/b4winckler/macvim/downloads) on Mountain
- Lion.
-
-**Windows**
-
- * [gVim](http://www.vim.org/download.php#pc) - I'm using [Wu
- Yongwei's](http://wyw.dcweb.cn) pre-compiled [gVim
- 7.3.333](http://wyw.dcweb.cn/download.asp?path=vim&file=gvim73.zip) because it
- has Ruby support and the latest patches.
-
-## Bindings
+# Bindings
 
 * Typing `jk` insert mode is equivalent to `Escape`.
 * Pressing `enter` in normal mode saves the current buffer.
