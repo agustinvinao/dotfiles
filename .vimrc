@@ -73,6 +73,7 @@ highlight Visual       ctermbg=3   ctermfg=0
 highlight Pmenu        ctermbg=240 ctermfg=12
 highlight PmenuSel     ctermbg=0   ctermfg=3
 highlight SpellBad     ctermbg=0   ctermfg=1
+highlight Folded       ctermbg=239 ctermfg=darkgrey
 
 " highlight the status bar when in insert mode
 if version >= 700
@@ -218,7 +219,7 @@ nmap <silent> <F3> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=0
 
 "folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+"set foldmethod=indent   "fold based on indent
+"set foldnestmax=10      "deepest fold is 10 levels
+"set nofoldenable        "dont fold by default
+"set foldlevel=1         "this is just what i use
