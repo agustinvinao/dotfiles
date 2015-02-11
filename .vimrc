@@ -13,6 +13,7 @@ set vb                            " enable visual bell (disable audio bell)
 set laststatus=2                  " always show status bar
 set scrolloff=2                   " minimum lines above/below cursorline
 set nofoldenable                  " disable code folding
+set backspace=2                   " make backspace work like most other apps
 
 " saving and encoding
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
@@ -23,6 +24,10 @@ set hlsearch incsearch ignorecase smartcase
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow splitright
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  Folding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldmethod=syntax
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,13 +37,8 @@ set splitbelow splitright
 syntax on                           " show syntax highlighting
 let colorspace=256                  " Access colors present in 256 colorspace
 set background=dark                 "set dark background
-colorscheme Tomorrow-Night-Eighties "set colorscheme
+colorscheme Zenburn                 "set colorscheme
 set t_ut=                           " disable Background Color Erase
-" Darker background after line 80
-" if (exists('+colorcolumn'))
-"   execute "set colorcolumn=" . join(range(81,335), ',')
-"   highlight ColorColumn guibg=Black
-" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Formatting
@@ -341,19 +341,27 @@ endfunction
 
 " CtrlP
 " =====
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Exlude files or directories
+
 " reverse results
 let g:ctrlp_match_window_reversed = 0
+
 " more results
 let g:ctrlp_max_height = 20
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
+
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+
 else
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co
     --exclude-standard', 'find %s -type f']
@@ -364,13 +372,16 @@ endif
 
 " NERDTree
 " ========
+
 " Mirror tree position for every buffer
 autocmd BufEnter * NERDTreeMirror
+
 " Close nerdtree when it's the only buffer left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Syntastic
 " =========
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -384,6 +395,7 @@ let g:syntastic_ruby_checkers = ['rubocop']
 
 " Easymotion
 " ==========
+
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
 hi link EasyMotionTarget ErrorMsg
@@ -393,4 +405,5 @@ hi link EasyMotionTarget2Second MatchParent
 
 " javascript-libraries-syntax
 " ===========================
+
 let g:used_javascript_libs = 'underscore,angularjs,jquery,angularui,jasmine'

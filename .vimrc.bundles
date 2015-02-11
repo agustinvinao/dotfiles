@@ -34,6 +34,9 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'gorodinskiy/vim-coloresque'
+" NeoBundle 'ervandew/supertab'
+" NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'nelstrom/vim-markdown-folding'
 
 "Ruby specific
 "=============
@@ -58,6 +61,9 @@ NeoBundle 'briancollins/vim-jst'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'goatslacker/mango.vim'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'yearofmoo/Vim-Darkmate'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jnurmine/Zenburn'
 
 
 call neobundle#end()
