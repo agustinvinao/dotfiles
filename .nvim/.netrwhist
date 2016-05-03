@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/agustinvinao'
+let g:netrw_dirhist_2='/opt/rubies/2.2.2/lib/ruby/gems/2.2.0/gems/faraday-0.9.2'
+let g:netrw_dirhist_3='/opt/rubies/2.2.2/lib/ruby/gems/2.2.0/gems/webmock-1.22.6'
+let g:netrw_dirhist_4='/opt/rubies/2.2.2/lib/ruby/gems/2.2.0/gems/devise-3.5.3'

@@ -1,0 +1,1 @@
+/Users/agustinvinao/.nvim/.nvimrc
