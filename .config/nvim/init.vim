@@ -1,47 +1,80 @@
-" vimrc
-set undofile                " Save undo's after file closes
-set undodir=$HOME/.nvim/undo " where to save undo histories
-set undolevels=1000         " How many undos
-set undoreload=10000        " number of lines to save for undo
-
-" Plugins ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if empty(glob('~/.nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.nvim/plugged')
-Plug 'reedes/vim-wordy'
-Plug 'jiangmiao/auto-pairs'
-Plug 'dyng/ctrlsf.vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } |  Plug 'junegunn/fzf.vim'
-Plug 'jaxbot/github-issues.vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'benekastah/neomake', { 'on': ['Neomake'] }
-Plug 'kassio/neoterm'
-Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'sass', 'scss', 'less'] }
-Plug 'tpope/vim-commentary'
+call plug#begin('~/.vim/plugged')
+
+" Original packages from config
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+
+" Group dependencies, vim-snippets depends on ultisnips
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" On-demand loading
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } |  Plug 'junegunn/fzf.vim'
+" Vim plugin, insert or delete brackets, parens, quotes in pair http://www.vim.org/scripts/script.php?script_id=3599
+Plug 'jiangmiao/auto-pairs'
+" An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2
+Plug 'dyng/ctrlsf.vim'
+" Dark powered asynchronous completion framework for neovim
+Plug 'Shougo/deoplete.nvim'
+
+" Github issue lookup in Vim http://jaxbot.me/articles/github-issues-vim-plugin-5-7-2014
+" Plug 'jaxbot/github-issues.vim'
+" A Vim plugin that manages your tag files
+" Plug 'ludovicchabant/vim-gutentags'
+" A plugin for asynchronous :make using Neovim's job-control functionality
+Plug 'benekastah/neomake', { 'on': ['Neomake'] }
+
+" Wrapper of some neovim's :terminal functions.
+Plug 'kassio/neoterm'
+" The standard snippets repository for neosnippet<Paste>
+Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" A tree explorer plugin for vim.
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle'] }
+" Make terminal vim and tmux work better together.
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" Better whitespace highlighting for Vim
+Plug 'ntpeters/vim-better-whitespace'
+" css/less/sass/html color preview for vim
+Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'sass', 'scss', 'less'] }
+" commentary.vim: comment stuff out http://www.vim.org/scripts/script.php?script_id=3695
+Plug 'tpope/vim-commentary'
+" Vim motions on speed! http://www.vim.org/scripts/script.php?script_id=3526
 Plug 'easymotion/vim-easymotion'
+" fugitive.vim: a Git wrapper so awesome, it should be illegal http://www.vim.org/scripts/script.php?script_id=2975
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', { 'on': 'Gitv' }
+" eunuch.vim: helpers for UNIX http://www.vim.org/scripts/script.php?script_id=4300
 Plug 'tpope/vim-eunuch'
+" Plugin to move lines and selections up and down http://www.vim.org/scripts/script.php?script_id=4687
 Plug 'matze/vim-move'
+" True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'sheerun/vim-polyglot'
+" repeat.vim: enable repeating supported plugin maps with " http://www.vim.org/scripts/script.php?script_id=2136
 Plug 'tpope/vim-repeat'
+" surround.vim: quoting/parenthesizing made simple http://www.vim.org/scripts/script.php?script_id=1697
 Plug 'tpope/vim-surround'
+" Sane buffer/window deletion.
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+" sensible.vim: Defaults everyone can agree on  http://www.vim.org/scripts/script.php?script_id=4391
 Plug 'tpope/vim-sensible'
+" speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more http://www.vim.org/scripts/script.php?script_id=2120
 Plug 'tpope/vim-speeddating'
+" Run your tests at the speed of thought
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestNearest', 'TestSuite', 'TestVisit'] }
+" vim plugin for tmux.conf
 Plug 'tmux-plugins/vim-tmux'
+" Seamless navigation between tmux panes and vim splits
 Plug 'christoomey/vim-tmux-navigator'
+" vim plugin to interact with tmux
 Plug 'benmills/vimux'
 
 " Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,7 +84,8 @@ Plug 'vim-scripts/restore_view.vim'
 " Plug 'airblade/vim-gitgutter'
 Plug 'henrik/vim-indexed-search'
 " Plug 'oguzbilgic/sexy-railscasts-theme'
-Plug 'dhruvasagar/vim-railscasts-theme'
+" Plug 'dhruvasagar/vim-railscasts-theme'
+Plug 'jpo/vim-railscasts-theme'
 
 " Ruby specific ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plug 'tpope/vim-endwise'
@@ -72,10 +106,13 @@ Plug 'mxw/vim-jsx'
 Plug 'neo4j-contrib/cypher-vim-syntax'
 
 " RubyMotion specific ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Plug 'rcyrus/snipmate-snippets-rubymotion'
+" Plug 'rcyrus/snipmate-snippets-rubymotion'<Paste>
 
+
+" Add plugins to &runtimepath
 call plug#end()
 
+set number
 
 " General options ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Watch for changes in .vimrc and automatically reload the config.
@@ -97,7 +134,7 @@ set exrc secure
 set nobackup nowritebackup noswapfile
 
 " Use zsh as shell
-set shell=/usr/bin/zsh
+set shell=/usr/local/bin/zsh
 
 " Interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Colorscheme
@@ -275,6 +312,8 @@ let g:NERDTreeIgnore=[
   \ 'tags$',
   \ 'tmp$',
   \ 'node_modules$' ]
+let g:NERDTreeWinSize=40
+let g:NERDTreeShowHidden=1
 
 " Neomake ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 let g:neomake_verbose = 0
@@ -353,4 +392,4 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_scala_checkers=['scalac', 'scalastyle']
+" let g:syntastic_scala_checkers=['scalac', 'scalastyle']
